@@ -35,6 +35,8 @@ class Zadania {
          Następnie zmierz czas wykonywania tych operacji i porównaj wyniki.
         */
 
+        System.out.println("\nMierzenie czasu operacji na ArrayList oraz LinkedList...\n");
+
         // Mierzony czas dla ArrayList
 
         int ilosc_operacji = 100000;
@@ -86,5 +88,49 @@ class Zadania {
 
         double difference = (double) Math.abs((estimatedTime - estimatedTime2))/ 1000000000.0;
         System.out.println("Roznica: " + difference + " sekund");
+    }
+
+    static void Zadanie3(){
+
+        /*
+         Stwórz aplikację, która umożliwia użytkownikowi przechowywanie par klucz-wartość w mapie typu HashMap i TreeMap.
+         Po dodaniu kilku elementów, zwróć uwagę na różnice w kolejności kluczy w obu mapach.
+        */
+
+        // Aplikacja dla Hashmap
+
+        System.out.println("Dodaj pracowników: ");
+
+        HashMap<Integer, String> Pracownicy_hash = new HashMap<>();
+        TreeMap<Integer, String> Pracownicy_tree = new TreeMap<>();
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true){
+
+            System.out.println("Podaj numer pracownika i imie pracownika (np. 123 Jan): ");
+            String pracownik = sc.nextLine();
+            String[] informacje = pracownik.split(" ");
+
+            int numer_pracownika = Integer.parseInt(informacje[0]);
+            String imie_pracownika = informacje[1];
+
+            Pracownicy_hash.put(numer_pracownika, imie_pracownika);
+            Pracownicy_tree.put(numer_pracownika, imie_pracownika);
+
+
+            System.out.println("Czy to wszyscy? (Y/N)");
+            String odpowiedz = sc.next();
+
+            if (odpowiedz.equalsIgnoreCase("Y")) {
+                break;
+            }
+
+            sc.nextLine();
+        }
+
+        System.out.println("Pracownicy w Hashmapie: " + Pracownicy_hash);
+        System.out.println("Pracownicy w Treemapie: " + Pracownicy_tree);
+
     }
 }
